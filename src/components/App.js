@@ -4,11 +4,13 @@ import React, { useState, useEffect } from 'react'
 function App() {
   const [foxes, setFoxes] = useState([]);
   const useGetFoxes = () =>{
+    const [fox, setFox] = useState(null)
     useEffect(() => {
       fetch("https://randomfox.ca/floof")
         .then(response => response.json())
-        .then(data => setFoxes([...foxes, data.image]))
+        .then(data => setFox([data.image]))
     }, [])
+    return fox;
   }
   return (
     <div className="App">
