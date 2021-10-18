@@ -3,20 +3,23 @@ import React, { useState, useEffect } from 'react'
 
 function App() {
   const [foxes, setFoxes] = useState([]);
-  const useGetFoxes = () =>{
-    const [fox, setFox] = useState(null)
-    useEffect(() => {
-      fetch("https://randomfox.ca/floof")
-        .then(response => response.json())
-        .then(data => setFox([data.image]))
-    }, [])
-    return fox;
+
+  async function handleGetFox(){
+    await fetch("https://randomfox.ca/floof")
+      .then(response => response.json())
+      .then(data => setFoxes([...foxes, data.image]))
+  }
+  const check = () =>{
+    console.log(foxes);
   }
   return (
     <div className="App">
       <header className="App-header">
-        <div className="clickHere" onClick={useGetFoxes}>
+        <div className="clickHere" onClick={handleGetFox}>
           <p>Click Here for Foxes</p>
+        </div>
+        <div className="clickHere" onClick={check}>
+          <p>check</p>
         </div>
         {foxes.map(fox => <img  src={fox} alt="a cute fox"/>)}
       </header>
