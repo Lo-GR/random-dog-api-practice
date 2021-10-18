@@ -5,9 +5,14 @@ function App() {
   const [foxes, setFoxes] = useState([]);
 
   async function handleGetFox(){
-    await fetch("https://randomfox.ca/floof")
+    await fetch("https://randomfox.ca/floof", {
+      mode: "no-cors"
+    })
       .then(response => response.json())
       .then(data => setFoxes([...foxes, data.image]))
+      .catch(err => {
+        console.log(err)
+      })
   }
   const check = () =>{
     console.log(foxes);
