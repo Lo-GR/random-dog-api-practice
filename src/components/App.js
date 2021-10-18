@@ -1,15 +1,21 @@
 import '../styles/App.css';
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 function App() {
   const [foxes, setFoxes] = useState([]);
 
   async function handleGetFox(){
-    await fetch("https://randomfox.ca/floof", {
-      mode: "no-cors"
-    })
+    await fetch("https://aws.random.cat/meow", {
+        method: "GET",
+      })
+      // .catch(err => {
+      //   console.log(err)
+      // })
+    // console.log(foxResponse);
+    // const foxData = await foxResponse.json();
+    // setFoxes([...foxes, foxData.image])
       .then(response => response.json())
-      .then(data => setFoxes([...foxes, data.image]))
+      .then(data => setFoxes([...foxes, data.file]))
       .catch(err => {
         console.log(err)
       })
