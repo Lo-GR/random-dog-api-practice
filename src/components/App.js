@@ -19,17 +19,11 @@ function App() {
         console.log(err)
       })
   }
-  const check = () =>{
-    console.log(dogs);
-  }
   return (
     <div className="App">
       <header className="App-header">
         <div className="clickHere" onClick={handleGetFox}>
           <p>Click Here for Dogs</p>
-        </div>
-        <div className="clickHere" onClick={check}>
-          <p>check</p>
         </div>
         {dogs.map(dog => {
           if(checkFileType(dog)){
