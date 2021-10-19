@@ -21,18 +21,18 @@ function App() {
   }
   return (
     <div className="App">
-      <header className="App-header">
-        <div className="clickHere" onClick={handleGetFox}>
-          <p>Click Here for Dogs</p>
-        </div>
+      <div className="clickHere" onClick={handleGetFox}>
+        <p>Click Here for Dogs</p>
+      </div>
+      <div className="doggos">
         {dogs.map(dog => {
           if(checkFileType(dog)){
-            return <video src={dog} width="320" height="240" type="video/mp4" controls/>
+            return <video src={dog} width="320" height="240" type="video/mp4" controls className="file"/>
           } else {
-            return <img  src={dog} alt="a cute doggo"/>
+            return <img  src={dog} alt="a cute doggo" className="file"/>
           }
           })}
-      </header>
+      </div>
     </div>
   );
 }
